@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mokepon - Batalla de Mascotas</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+    <section id="seleccionar-mokepon">
+        <h1 class="titulo">MOKEPON</h1>
+        <h2 class="subtitulo">Elige tu Mascota</h2>
+        
+        <div id="contenedorTarjetas" class="tarjetas">
+            </div>
+
+        <button id="boton-elegir-mokepon">Seleccionar</button>
+    </section>
+
+    <section id="seleccionar-ataque" style="display: none;">
+        <h1 class="titulo-MINI">MOKEPON</h1>
+        
+        <div class="pantalla-combate">
+            <div class="datos-personaje datos-jugador">
+                <h3 id="mokepon-jugador">-</h3>
+                <div class="marcador-vidas">Vidas: <span id="vidas-jugador">3</span></div>
+                <div id="ataques-jugador" class="historial-ataques"></div>
+            </div>
+
+            <div class="centro-interfaz">
+                <div id="mensajes">
+                    <p id="resultado">¡A pelear!</p>
+                </div>
+                <section id="reiniciar" style="display: none;">
+                    <button id="boton-reiniciar">Reiniciar Juego</button>
+                </section>
+            </div>
+
+            <div class="datos-personaje datos-enemigo">
+                <h3 id="mokepon-enemigo">-</h3>
+                <div class="marcador-vidas">Vidas: <span id="vidas-enemigo">3</span></div>
+                <div id="ataques-enemigo" class="historial-ataques"></div>
+            </div>
+        </div>
+
+        <h2 class="subtitulo">Elige tu ataque</h2>
+        <div id="contenedorAtaques" class="contenedor-ataques">
+            </div>
+    </section>
+
+    <script src="./js/mokepon.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Configuración de editores (VS Code, etc.)
+.vscode/
+.idea/
+
+# Notas temporales tuyas
+notas.txt
