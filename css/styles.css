@@ -239,3 +239,19 @@ body {
         order: -1; /* Pone los mensajes arriba en móviles */
     }
 }
+
+#ver-mapa {
+    display: none; /* Cambiado a none inicial; JS se encargará de activarlo en flex */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+}
+
+#canvas {
+    background: #222230;
+    border: 2px solid #44445c;
+    border-radius: 20px;
+    max-width: 100%; /* Permite que sea responsivo en pantallas pequeñas sin romper la escala */
+}
