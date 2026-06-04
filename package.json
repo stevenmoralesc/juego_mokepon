@@ -1,0 +1,24 @@
+{
+  "name": "juego_mokepon",
+  "version": "1.0.0",
+  "description": "¡Bienvenido a **Mokepon**! Un videojuego web de batallas por turnos inspirado en mecánicas clásicas de RPG y el famoso juego de \"Piedra, Papel o Tijera\", desarrollado como parte de mi aprendizaje en Programación Básica.",
+  "homepage": "https://github.com/stevenmoralesc/juego_mokepon#readme",
+  "bugs": {
+    "url": "https://github.com/stevenmoralesc/juego_mokepon/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevenmoralesc/juego_mokepon.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  }
+}

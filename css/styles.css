@@ -1,48 +1,85 @@
+/* ============================================================
+   Mokepon — Estilos
+   Paleta: oscuro profundo / rojo coral / cian helado / dorado
+   ============================================================ */
+
 @import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
 
-/* --- Estilos Generales --- */
-body {
+/* ─── Variables ──────────────────────────────────────────── */
+:root {
+    /* Paleta de colores */
+    --color-fondo:         #12121c;
+    --color-superficie:    #1e1e2e;
+    --color-tarjeta:       #252538;
+    --color-borde:         #33334a;
+    --color-acento:        #e63950;
+    --color-acento-oscuro: #a01e30;
+    --color-cian:          #cbeef3;
+    --color-dorado:        #ffbe0b;
+    --color-texto:         #e8e8f0;
+    --color-texto-suave:   #9999bb;
+
+    /* Tipografía */
+    --fuente-juego: 'Jersey 15', sans-serif;
+
+    /* Espaciado */
+    --radio-base:   12px;
+    --radio-grande: 20px;
+}
+
+/* ─── Reset y base ────────────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+}
+
+body {
     min-height: 100vh;
-    font-family: "Jersey 15", sans-serif;
-    background-color: #1a1a24;
-    color: #EFEFEF;
+    padding: 24px 16px 40px;
+    font-family: var(--fuente-juego);
+    background-color: var(--color-fondo);
+    /* Textura sutil de puntos para dar profundidad */
+    background-image: radial-gradient(var(--color-borde) 1px, transparent 1px);
+    background-size: 28px 28px;
+    color: var(--color-texto);
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-sizing: border-box;
 }
 
+/* ─── Tipografía principal ────────────────────────────────── */
 .titulo {
-    color: #dd2d4a;
-    font-size: 100px;
-    margin: 10px 0;
-    text-shadow: 4px 4px 0px #880d1e;
+    font-size: clamp(60px, 12vw, 100px);
+    color: var(--color-acento);
+    text-shadow: 4px 4px 0 var(--color-acento-oscuro);
     text-align: center;
+    line-height: 1;
+    margin-bottom: 4px;
 }
 
-.titulo-MINI {
-    color: #dd2d4a;
-    font-size: 50px;
-    margin: 5px 0;
-    text-shadow: 2px 2px 0px #880d1e;
+.titulo-mini {
+    font-size: clamp(30px, 6vw, 50px);
+    color: var(--color-acento);
+    text-shadow: 2px 2px 0 var(--color-acento-oscuro);
+    text-align: center;
+    margin-bottom: 4px;
 }
 
 .subtitulo {
-    color: #cbeef3;
-    font-size: 35px;
-    margin-bottom: 30px;
+    font-size: clamp(22px, 4vw, 35px);
+    color: var(--color-cian);
     text-align: center;
+    margin-bottom: 28px;
 }
 
-/* --- Sección de Selección --- */
+/* ─── Sección: Selección de mokepon ──────────────────────── */
 #seleccionar-mokepon {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 800px;
+    max-width: 820px;
 }
 
 .tarjetas {
@@ -52,78 +89,148 @@ body {
     justify-content: center;
 }
 
+/* Radio button oculto */
+.tarjetas input[type="radio"] {
+    display: none;
+}
+
 .tarjeta-de-mokepon {
     width: 200px;
-    height: 250px;
-    background: #2a2a3a;
-    border: 4px solid #cbeef3;
-    border-radius: 15px;
+    min-height: 260px;
+    background: var(--color-tarjeta);
+    border: 3px solid var(--color-borde);
+    border-radius: var(--radio-grande);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-    padding: 15px;
-    box-sizing: border-box;
+    padding: 20px 16px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .tarjeta-de-mokepon:hover {
-    transform: scale(1.05);
-    border-color: #dd2d4a;
+    transform: translateY(-6px) scale(1.03);
+    border-color: var(--color-acento);
+    box-shadow: 0 8px 24px rgba(230, 57, 80, 0.25);
 }
 
 .tarjeta-de-mokepon p {
-    font-size: 28px;
-    margin: 0;
-    color: #EFEFEF;
+    font-size: 26px;
+    color: var(--color-texto);
+    text-align: center;
 }
 
 .tarjeta-de-mokepon img {
     width: 120px;
     height: 120px;
     object-fit: contain;
+    /* Sombra pixel-art */
+    filter: drop-shadow(2px 4px 0 rgba(0,0,0,0.5));
+    transition: filter 0.2s ease;
 }
 
-/* Esconder el radio button real */
-.tarjetas input[type="radio"] {
-    display: none;
-}
-
-/* Efecto visual al seleccionar la tarjeta */
+/* Estado: seleccionado */
 .tarjetas input[type="radio"]:checked + .tarjeta-de-mokepon {
-    background: #dd2d4a;
-    border-color: #ffffff;
-    box-shadow: 0px 0px 15px #dd2d4a;
+    background: var(--color-acento);
+    border-color: #fff;
+    box-shadow: 0 0 20px rgba(230, 57, 80, 0.6), 0 8px 0 var(--color-acento-oscuro);
 }
 
-/* --- Botones del Sistema --- */
-#boton-elegir-mokepon, #boton-reiniciar {
-    font-family: "Jersey 15", sans-serif;
-    margin-top: 30px;
-    padding: 10px 40px;
+.tarjetas input[type="radio"]:checked + .tarjeta-de-mokepon img {
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
+}
+
+/* ─── Botones del sistema ─────────────────────────────────── */
+#boton-elegir-mokepon,
+#boton-reiniciar {
+    font-family: var(--fuente-juego);
+    margin-top: 28px;
+    padding: 12px 44px;
     font-size: 26px;
-    background: #dd2d4a;
-    color: #EFEFEF;
+    background: var(--color-acento);
+    color: #fff;
     border: none;
-    border-radius: 10px;
+    border-radius: var(--radio-base);
     cursor: pointer;
-    box-shadow: 0 5px 0 #880d1e;
-    transition: all 0.1s;
+    box-shadow: 0 6px 0 var(--color-acento-oscuro);
+    transition: transform 0.1s, box-shadow 0.1s;
 }
 
-#boton-elegir-mokepon:active, #boton-reiniciar:active {
-    transform: translateY(5px);
-    box-shadow: 0 0px 0 #880d1e;
+#boton-elegir-mokepon:hover,
+#boton-reiniciar:hover {
+    background: #f0435a;
 }
 
-/* --- Tablero de Combate --- */
+#boton-elegir-mokepon:active,
+#boton-reiniciar:active {
+    transform: translateY(6px);
+    box-shadow: 0 0 0 var(--color-acento-oscuro);
+}
+
+/* ─── Sección: Mapa ───────────────────────────────────────── */
+#ver-mapa {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+    gap: 16px;
+}
+
+#canvas {
+    background: var(--color-superficie);
+    border: 2px solid var(--color-borde);
+    border-radius: var(--radio-grande);
+    max-width: 100%;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* Controles de dirección */
+.contenedor-direcciones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.fila-direcciones {
+    display: flex;
+    gap: 16px;
+}
+
+.btn-direccion {
+    font-family: var(--fuente-juego);
+    font-size: 20px;
+    padding: 10px 22px;
+    background: var(--color-superficie);
+    color: var(--color-cian);
+    border: 2px solid var(--color-borde);
+    border-radius: var(--radio-base);
+    cursor: pointer;
+    box-shadow: 0 4px 0 #0a0a14;
+    transition: transform 0.1s, box-shadow 0.1s;
+    user-select: none;
+}
+
+.btn-direccion:hover {
+    background: var(--color-tarjeta);
+    border-color: var(--color-cian);
+}
+
+.btn-direccion:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #0a0a14;
+}
+
+/* ─── Sección: Combate ────────────────────────────────────── */
 #seleccionar-ataque {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 900px;
+    max-width: 920px;
+    gap: 8px;
 }
 
 .pantalla-combate {
@@ -131,127 +238,134 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
-    background: #222230;
-    border: 3px solid #44445c;
-    border-radius: 20px;
+    background: var(--color-superficie);
+    border: 2px solid var(--color-borde);
+    border-radius: var(--radio-grande);
     padding: 20px;
-    margin-bottom: 30px;
-    box-sizing: border-box;
-    gap: 15px;
+    gap: 16px;
 }
 
+/* Panel de datos del personaje */
 .datos-personaje {
     flex: 1;
-    background: #1a1a24;
-    padding: 15px;
-    border-radius: 12px;
+    background: var(--color-fondo);
+    border: 1px solid var(--color-borde);
+    padding: 16px;
+    border-radius: var(--radio-base);
     text-align: center;
-    min-height: 200px;
+    min-height: 180px;
 }
 
 .datos-personaje h3 {
-    font-size: 32px;
-    margin: 0 0 10px 0;
-    color: #cbeef3;
+    font-size: 28px;
+    color: var(--color-cian);
+    margin-bottom: 8px;
 }
 
 .marcador-vidas {
-    font-size: 24px;
-    color: #ffbe0b;
-    margin-bottom: 15px;
+    font-size: 22px;
+    color: var(--color-dorado);
+    margin-bottom: 12px;
 }
 
 .historial-ataques {
-    font-size: 20px;
-    color: #aaa;
+    font-size: 18px;
+    color: var(--color-texto-suave);
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
+    max-height: 120px;
+    overflow-y: auto;
 }
 
-/* Centro de la interfaz (Mensajes) */
+/* Centro: mensajes de combate */
 .centro-interfaz {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 220px;
+    gap: 12px;
+    min-width: 180px;
 }
 
 #mensajes {
     width: 100%;
-    background: #3a1c28;
-    border: 3px solid #dd2d4a;
-    border-radius: 15px;
-    padding: 15px;
+    background: #2a0f1a;
+    border: 2px solid var(--color-acento);
+    border-radius: var(--radio-grande);
+    padding: 16px;
     text-align: center;
-    box-sizing: border-box;
 }
 
 #resultado {
-    font-size: 26px;
-    margin: 0;
-    color: #ffffff;
+    font-size: 22px;
+    color: #fff;
+    line-height: 1.4;
 }
 
-/* Contenedor de Botones de Ataque */
+#reiniciar {
+    display: none;
+}
+
+/* Botones de ataque */
 .contenedor-ataques {
     display: flex;
-    gap: 15px;
+    gap: 14px;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 8px 0;
 }
 
 .boton-ataque {
-    font-family: "Jersey 15", sans-serif;
-    padding: 10px 25px;
-    font-size: 30px;
-    background: #cbeef3;
-    color: #1a1a24;
+    font-family: var(--fuente-juego);
+    font-size: 32px;
+    padding: 10px 22px;
+    background: var(--color-cian);
+    color: var(--color-fondo);
     border: none;
-    border-radius: 12px;
+    border-radius: var(--radio-base);
     cursor: pointer;
-    transition: all 0.2s;
+    box-shadow: 0 5px 0 #7ab5bc;
+    transition: transform 0.1s, box-shadow 0.1s, background 0.15s;
 }
 
 .boton-ataque:hover:not(:disabled) {
-    background: #ffffff;
-    transform: translateY(-2px);
+    background: #fff;
+    transform: translateY(-3px);
+}
+
+.boton-ataque:active:not(:disabled) {
+    transform: translateY(5px);
+    box-shadow: 0 0 0 #7ab5bc;
 }
 
 .boton-ataque:disabled {
-    background: #44445c;
-    color: #888;
+    background: var(--color-borde);
+    color: var(--color-texto-suave);
     cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.6;
 }
 
-/* --- Responsive --- */
+/* ─── Responsive ──────────────────────────────────────────── */
 @media (max-width: 700px) {
     .pantalla-combate {
         flex-direction: column;
         align-items: center;
     }
+
     .datos-personaje {
         width: 100%;
     }
+
     .centro-interfaz {
         width: 100%;
-        order: -1; /* Pone los mensajes arriba en móviles */
+        order: -1; /* Los mensajes van arriba en móvil */
     }
 }
 
-#ver-mapa {
-    display: none; /* Cambiado a none inicial; JS se encargará de activarlo en flex */
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 900px;
-}
-
-#canvas {
-    background: #222230;
-    border: 2px solid #44445c;
-    border-radius: 20px;
-    max-width: 100%; /* Permite que sea responsivo en pantallas pequeñas sin romper la escala */
+@media (max-width: 480px) {
+    .tarjeta-de-mokepon {
+        width: 160px;
+    }
 }

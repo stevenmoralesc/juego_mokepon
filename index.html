@@ -3,65 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mokepon - Batalla de Mascotas</title>
+    <title>Mokepon — Batalla de Mascotas</title>
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
 
+    <!-- ── Pantalla 1: Selección de mokepon ── -->
     <section id="seleccionar-mokepon">
         <h1 class="titulo">MOKEPON</h1>
         <h2 class="subtitulo">Elige tu Mascota</h2>
-        
-        <div id="contenedorTarjetas" class="tarjetas">
-            </div>
+
+        <div id="contenedorTarjetas" class="tarjetas"></div>
 
         <button id="boton-elegir-mokepon">Seleccionar</button>
     </section>
 
+
+    <!-- ── Pantalla 2: Mapa de exploración ── -->
     <section id="ver-mapa" style="display: none;">
-        <h1 class="titulo-MINI">RECORRE EL MAPA</h1>
+        <h1 class="titulo-mini">RECORRE EL MAPA</h1>
+
         <canvas id="canvas" width="650" height="450"></canvas>
-        
-        <div class="contenedor-direcciones" style="margin-top: 15px; display: flex; flex-direction: column; align-items: center; gap: 10px;">
-            <button id="boton-arriba" style="padding: 10px 20px; font-family: 'Jersey 15'; font-size: 20px;">▲ Arriba</button>
-            <div style="display: flex; gap: 20px;">
-                <button id="boton-izquierda" style="padding: 10px 20px; font-family: 'Jersey 15'; font-size: 20px;">◀ Izq</button>
-                <button id="boton-derecha" style="padding: 10px 20px; font-family: 'Jersey 15'; font-size: 20px;">Der ▶</button>
+
+        <div class="contenedor-direcciones">
+            <button id="boton-arriba" class="btn-direccion">▲ Arriba</button>
+            <div class="fila-direcciones">
+                <button id="boton-izquierda" class="btn-direccion">◀ Izq</button>
+                <button id="boton-derecha"   class="btn-direccion">Der ▶</button>
             </div>
-            <button id="boton-abajo" style="padding: 10px 20px; font-family: 'Jersey 15'; font-size: 20px;">▼ Abajo</button>
+            <button id="boton-abajo" class="btn-direccion">▼ Abajo</button>
         </div>
     </section>
 
+
+    <!-- ── Pantalla 3: Combate ── -->
     <section id="seleccionar-ataque" style="display: none;">
-        <h1 class="titulo-MINI">MOKEPON</h1>
-        
+        <h1 class="titulo-mini">MOKEPON</h1>
+
         <div class="pantalla-combate">
+
+            <!-- Panel izquierdo: jugador -->
             <div class="datos-personaje datos-jugador">
-                <h3 id="mokepon-jugador">-</h3>
+                <h3 id="mokepon-jugador">—</h3>
                 <div class="marcador-vidas">Vidas: <span id="vidas-jugador">3</span></div>
                 <div id="ataques-jugador" class="historial-ataques"></div>
             </div>
 
+            <!-- Centro: mensajes y reinicio -->
             <div class="centro-interfaz">
                 <div id="mensajes">
                     <p id="resultado">¡A pelear!</p>
                 </div>
-                <section id="reiniciar" style="display: none;">
+                <section id="reiniciar">
                     <button id="boton-reiniciar">Reiniciar Juego</button>
                 </section>
             </div>
 
+            <!-- Panel derecho: enemigo -->
             <div class="datos-personaje datos-enemigo">
-                <h3 id="mokepon-enemigo">-</h3>
+                <h3 id="mokepon-enemigo">—</h3>
                 <div class="marcador-vidas">Vidas: <span id="vidas-enemigo">3</span></div>
                 <div id="ataques-enemigo" class="historial-ataques"></div>
             </div>
+
         </div>
 
         <h2 class="subtitulo">Elige tu ataque</h2>
-        <div id="contenedorAtaques" class="contenedor-ataques">
-            </div>
+        <div id="contenedorAtaques" class="contenedor-ataques"></div>
     </section>
+
 
     <script src="./js/mokepon.js"></script>
 </body>
